@@ -1,0 +1,64 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Book {
+  id: Int!
+  book_name: String!
+  author_name: String!
+  user: User!
+  user_id: Float!
+}
+
+type User {
+  id: Int!
+  username: String!
+  first_name: String!
+  last_name: String!
+  email: String!
+  password: String!
+  books: Book
+}
+
+type SignInResponse {
+  access_token: String!
+  user: User!
+}
+
+type Query {
+  user(id: Int!): User!
+  books: Book!
+  book(id: Int!): Book!
+}
+
+type Mutation {
+  createBook(createBookInput: [CreateBookInput!]!): [Book!]!
+  updateBook(id: Int!, updateBookInput: UpdateBookInput!): Book!
+  removeBook(id: Int!): Book!
+  signIn(signinUserInput: SigninUserInput!): SignInResponse!
+  signUp(signUpUserInput: SignUpUserInput!): User!
+}
+
+input CreateBookInput {
+  book_name: String!
+  author_name: String!
+}
+
+input UpdateBookInput {
+  book_name: String!
+  author_name: String!
+  user_id: Float!
+}
+
+input SigninUserInput {
+  id: Int!
+  password: String!
+}
+
+input SignUpUserInput {
+  username: String!
+  first_name: String!
+  last_name: String!
+  email: String!
+  password: String!
+}
