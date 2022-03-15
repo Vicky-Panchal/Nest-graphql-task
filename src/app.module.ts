@@ -8,6 +8,7 @@ import { BooksModule } from './books/books.module';
 import { User } from './users/entities/user.entity';
 import { Book } from './books/entities/book.entity';
 import { AuthModule } from './auth/auth.module';
+import { SalesModule } from './sales/sales.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { AuthModule } from './auth/auth.module';
     UsersModule,
     BooksModule,
     AuthModule,
+    SalesModule,
   ]
 })
 export class AppModule {}
