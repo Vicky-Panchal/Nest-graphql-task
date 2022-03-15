@@ -17,6 +17,10 @@ export class Book {
   @Field()
   author_name: string;
 
+  @Column()
+  @Field(() => Int)
+  price:number;
+
   @ManyToOne(() => User, user => user.id)
   @JoinColumn({name: "user_id"})
   @Field(type => User)

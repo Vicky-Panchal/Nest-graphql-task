@@ -20,4 +20,9 @@ export class UpdateBookInput extends PartialType(CreateBookInput) {
   @IsNumber()
   @Field()
   user_id: number;
+
+  @IsOptional()
+  @IsNumber()
+  @Field(() => Int)
+  price: number;
 }

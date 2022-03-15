@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int, ResolveField } from '@nestjs/graphql';
 import { SalesService } from './sales.service';
 import { Sale } from './entities/sale.entity';
 import { CreateSaleInput } from './dto/create-sale.input';
@@ -23,13 +23,19 @@ export class SalesResolver {
     return this.salesService.findOne(id);
   }
 
-  @Mutation(() => Sale)
-  updateSale(@Args('updateSaleInput') updateSaleInput: UpdateSaleInput) {
-    return this.salesService.update(updateSaleInput.id, updateSaleInput);
+  @Query(() => String, { name: 'generateCSV' })
+  generateCSV() {
+    console.log("dddfd");
+    return this.salesService.generateCSV();
   }
 
-  @Mutation(() => Sale)
-  removeSale(@Args('id', { type: () => Int }) id: number) {
-    return this.salesService.remove(id);
-  }
+  // @Mutation(() => Sale)
+  // updateSale(@Args('updateSaleInput') updateSaleInput: UpdateSaleInput) {
+  //   return this.salesService.update(updateSaleInput.id, updateSaleInput);
+  // }
+
+  // @Mutation(() => Sale)
+  // removeSale(@Args('id', { type: () => Int }) id: number) {
+  //   return this.salesService.remove(id);
+  // }
 }

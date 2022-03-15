@@ -9,6 +9,7 @@ import { User } from './users/entities/user.entity';
 import { Book } from './books/entities/book.entity';
 import { AuthModule } from './auth/auth.module';
 import { SalesModule } from './sales/sales.module';
+import { Sale } from './sales/entities/sale.entity';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { SalesModule } from './sales/sales.module';
       username: 'postgres', // username
       password: 'vicky3600', // user password
       database: 'postgres', // name of our database,
-      entities: [User, Book], // models will be loaded automatically 
+      entities: [User, Book, Sale], // models will be loaded automatically 
       synchronize: true, // your entities will be synced with the database(recommended: disable in prod)
     }),
     UsersModule,

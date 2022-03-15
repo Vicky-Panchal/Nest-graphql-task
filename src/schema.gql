@@ -6,6 +6,7 @@ type Book {
   id: Int!
   book_name: String!
   author_name: String!
+  price: Int!
   user: User!
   user_id: Float!
 }
@@ -25,10 +26,21 @@ type SignInResponse {
   user: User!
 }
 
+type Sale {
+  id: Int!
+  quantity: Int
+  total: Int
+  book: Book!
+  book_id: Int!
+}
+
 type Query {
   user(id: Int!): User!
   books: Book!
   book(id: Int!): Book!
+  sales: [Sale!]!
+  sale(id: Int!): Sale!
+  generateCSV: String!
 }
 
 type Mutation {
@@ -37,16 +49,19 @@ type Mutation {
   removeBook(id: Int!): Book!
   signIn(signinUserInput: SigninUserInput!): SignInResponse!
   signUp(signUpUserInput: SignUpUserInput!): User!
+  createSale(createSaleInput: CreateSaleInput!): Sale!
 }
 
 input CreateBookInput {
   book_name: String!
   author_name: String!
+  price: Int!
 }
 
 input UpdateBookInput {
   book_name: String!
   author_name: String!
+  price: Int!
   user_id: Float!
 }
 
@@ -61,4 +76,10 @@ input SignUpUserInput {
   last_name: String!
   email: String!
   password: String!
+}
+
+input CreateSaleInput {
+  total: Int
+  quantity: Int
+  book_id: Int!
 }

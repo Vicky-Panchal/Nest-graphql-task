@@ -8,6 +8,7 @@ import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Book]), PassportModule, AuthModule],
-  providers: [BooksResolver, BooksService]
+  providers: [BooksResolver, BooksService],
+  exports: [BooksService]
 })
 export class BooksModule {}

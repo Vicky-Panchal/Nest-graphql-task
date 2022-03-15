@@ -13,4 +13,8 @@ export class CreateBookInput {
   @Field()
   author_name: string;
 
+  @IsNumber()
+  @Field(() => Int)
+  price: number;
+
 }
